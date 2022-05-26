@@ -2,9 +2,12 @@ import React from 'react'
 import styled from 'styled-components'
 import SearchIcon from '@mui/icons-material/Search';
 import { Search } from '@mui/icons-material';
+import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
+import Badge from '@mui/material/Badge';
 
 const Container = styled.div`
-height: 60px;
+height: 80px;
+background-color: lightgrey;
 
 `
 const Wrapper = styled.div`
@@ -13,10 +16,11 @@ display: flex;
 justify-content: space-around;
 `
 const Left = styled.div`
-margin-top: 10px;
+
 flex: 1;
 display: flex;
 allign-items: center;
+margin-top: 15px;
 `
 const Language = styled.div`
     font-size: 14px;
@@ -24,18 +28,35 @@ const Language = styled.div`
 `
 
 const SearchContainer = styled.div`
-border: 1px solid lightgray;
+
 display: flex;
 allign-items: center;
+margin-top: -6px;
+margin-left: 15px;
+padding: 5px;
 
 `
+
 const Center = styled.div`
-margin-top: 10px;
+margin-top: 15px;
 flex: 1;
+text-allign: center;
 `
 const Right = styled.div`
-margin-top: 10px;
+margin-top: 15px;
 flex: 1;
+display: flex;
+allign-items: center;
+justify-content: space-around;
+`
+const Logo = styled.h1`
+font-weight: bold;
+margin-left: 55px;
+`
+const MenuItem = styled.div`
+font-size: 20px;
+cursor: pointer;
+
 `
 
 const Navbar = () => {
@@ -45,12 +66,23 @@ const Navbar = () => {
             <Left> 
                 <Language>EN</Language>
                 <SearchContainer>
-                Input
-                    <SearchIcon></SearchIcon>
+                <input type="text" />
+                    <SearchIcon style={{color:"gray", fontSize: 30}}></SearchIcon>
                 </SearchContainer>
             </Left> 
-            <Center>Center</Center>
-            <Right>Right</Right>
+            <Center>
+                <Logo>Logo</Logo>
+            </Center>
+            <Right>
+                <MenuItem>REGISTER</MenuItem>
+                <MenuItem>SIGN IN</MenuItem>
+                <MenuItem>
+                    <Badge badgeContent={4} color="primary">
+                        <ShoppingCartIcon></ShoppingCartIcon>
+                    </Badge>
+                </MenuItem>
+                
+            </Right>
             
         </Wrapper>
     </Container>
