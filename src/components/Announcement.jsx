@@ -1,12 +1,14 @@
 import styled from 'styled-components'
 import React from 'react'
 
+const Container = styled.div`
+height: 30px;
+background-color: gray;
+`
+
 const Announcement = () => {
 
-    const Container = styled.div`
-    height: 30px;
-    background-color: gray;
-    `
+   
 
   return (
     <Container>
