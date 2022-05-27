@@ -12,7 +12,7 @@ position: relative;
 const Arrow = styled.div`
    width: 25px;
    height: 25px;
-    padding: 8px;
+    padding: 10px;
     background-color: lightgrey;
     border-radius: 50%;
     display: flex;
@@ -24,19 +24,37 @@ const Arrow = styled.div`
     left: ${props => props.direction === "left" && "20px"};
     right: ${props => props.direction === "right" && "20px"};
     margin: auto;
+    opacity: 0.5;
   
 
 `
+const Wrapper = styled.div`
 
+`
+const Image = styled.img`
+
+`
+const ImgContainer = styled.div`
+
+`
+const InfoContainer = styled.div`
+
+`
 
 const Slider = () => {
   return (
     <Container>
         <Arrow direction = "left">
             <ArrowBackIosNewIcon></ArrowBackIosNewIcon>
-            
         </Arrow>
-
+        <Wrapper>
+            <ImgContainer>
+               
+            </ImgContainer>
+            <InfoContainer>
+                
+            </InfoContainer>
+        </Wrapper>
         <Arrow direction = "right">
             <ArrowForwardIosIcon></ArrowForwardIosIcon>   
         </Arrow>
