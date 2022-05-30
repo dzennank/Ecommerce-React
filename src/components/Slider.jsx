@@ -2,6 +2,8 @@ import React from 'react'
 import styled from 'styled-components';
 import ArrowBackIosNewIcon from '@mui/icons-material/ArrowBackIosNew';
 import ArrowForwardIosIcon from '@mui/icons-material/ArrowForwardIos';
+import { sliderItems } from '../data';
+import { useState } from 'react';
 
 const Container = styled.div` 
 display: flex;
@@ -25,19 +27,20 @@ const Arrow = styled.div`
     right: ${props => props.direction === "right" && "20px"};
     margin: auto;
     opacity: 0.5;
-  
+    z-index: 2;
 
 `
 const Wrapper = styled.div`
 height: 100%;
   display: flex;
+  transform: translateX(${(props) => props.slideIndex * -100}vw);
 `
 const Slide = styled.div`
   width: 100vw;
   height: 100vh;
   display: flex;
   align-items: center;
-  
+  background-color: #${props => props.bg};
 `;
 
 const Image = styled.img`
@@ -73,43 +76,38 @@ const Button = styled.button`
 `
 
 const Slider = () => {
+
+    const [slideIndex, setSlideIndex] = useState(0)
+    const handleSubmit = (direction) => {
+        if(direction === "left") {
+            setSlideIndex(slideIndex > 0 ? slideIndex - 1: 2)
+        }
+        else {
+            setSlideIndex(slideIndex < 2 ? slideIndex + 1: 0)
+        }
+    }
   return (
     <Container>
-        <Arrow direction = "left">
+        <Arrow direction = "left" onClick={() => handleSubmit("left") }>
             <ArrowBackIosNewIcon></ArrowBackIosNewIcon>
         </Arrow>
-        <Wrapper>
-           <Slide> 
+        <Wrapper slideIndex={slideIndex}>
+            {sliderItems.map((item) => (
+                <Slide bg = {item.bg} > 
             <ImgContainer>
-               <Image src = "https://i.ibb.co/DG69bQ4/2.png"></Image>
+               <Image src = {item.img}></Image>
             </ImgContainer>
             <InfoContainer>
-                <Title>Sumer Sale</Title>
-                <Desc>ASDsadasf SADSADsafa fds fdss gfdgdfdsf  d fsf sf  dsf</Desc>
+                <Title>{item.title}</Title>
+                <Desc>{item.desc}</Desc>
                 <Button>Show Now</Button>
             </InfoContainer>
             </Slide>
-            <Slide> 
-            <ImgContainer>
-               <Image src = "https://i.ibb.co/DG69bQ4/2.png"></Image>
-            </ImgContainer>
-            <InfoContainer>
-                <Title>Sumer Sale</Title>
-                <Desc>ASDsadasf SADSADsafa fds fdss gfdgdfdsf  d fsf sf  dsf</Desc>
-                <Button>Show Now</Button>
-            </InfoContainer>
-            </Slide>
-        </Wrapper><Slide> 
-            <ImgContainer>
-               <Image src = "https://i.ibb.co/DG69bQ4/2.png"></Image>
-            </ImgContainer>
-            <InfoContainer>
-                <Title>Sumer Sale</Title>
-                <Desc>ASDsadasf SADSADsafa fds fdss gfdgdfdsf  d fsf sf  dsf</Desc>
-                <Button>Show Now</Button>
-            </InfoContainer>
-            </Slide>
-        <Arrow direction = "right">
+            ) )}
+           
+            
+        </Wrapper>
+        <Arrow direction = "right" onClick={() => handleSubmit("right")}>
             <ArrowForwardIosIcon></ArrowForwardIosIcon>   
         </Arrow>
     </Container>
