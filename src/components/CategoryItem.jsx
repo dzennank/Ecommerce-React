@@ -30,10 +30,12 @@ const Title = styled.h1`
     margin-bottom: 20px;
 `
 const Button = styled.button`
+     border:none;
     padding: 10px;
-    font-size: 20px;
-    background-color: transparent;
+    background-color: white;
+    color:gray;
     cursor: pointer;
+    font-weight: 600;
     border-radius: 20%;
 `
 
@@ -47,10 +49,11 @@ const CategoryItem = ({ item }) => {
             <Title>
                 {item.title}
             </Title>
-        </Info>
-        <Button>
+        g<Button>
             SHOP NOW
         </Button>
+        </Info>
+        
     </Container>
   )
 }
