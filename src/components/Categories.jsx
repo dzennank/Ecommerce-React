@@ -4,7 +4,8 @@ import { categories } from '../data';
 import CategoryItem from './CategoryItem';
 
 const Container = styled.div`
-
+    display: flex;
+    justify-content: space-between;
 `
 
 const Categories = () => {
