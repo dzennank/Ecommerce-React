@@ -5,12 +5,14 @@ import InstagramIcon from '@mui/icons-material/Instagram';
 import LinkedInIcon from '@mui/icons-material/LinkedIn';
 
 const Container = styled.div`
-    height: 80px;
-    displey: flex;
-    
     
 
 `
+const Wrapper = styled.div`
+
+display: flex;
+`
+
 const Left = styled.div`
     flex: 1;
     display: flex;
@@ -22,6 +24,7 @@ const Center = styled.div`
 flex: 1;
 padding: 20px;
 
+
 `
 const Right = styled.div`
 flex: 1;
@@ -32,7 +35,6 @@ const Logo = styled.h1`
 `
 const Desc = styled.p`
 
-    margin: 20px 130vh 20px 0;
     
 `
 const SocialContainer = styled.div`
@@ -49,13 +51,27 @@ const SocialIcon = styled.div`
         margin-right: 20px;
     
 `
+const Title = styled.h3`
 
+`
+const List = styled.ul`
+margin: 0;
+  padding: 0;
+  list-style: none;
+  display: flex;
+  flex-wrap: wrap;
+`
+const ListItem = styled.li`
+width: 50%;
+  margin-bottom: 10px;
+`
 
 
 
 const Footer = () => {
   return (
     <Container>
+    <Wrapper>
         <Left>
             <Logo>LOGO</Logo>
             <Desc>Lorem ipsum dolor sit amet, consectetur adipiscing elit, 
@@ -74,8 +90,23 @@ const Footer = () => {
                  </SocialIcon>
              </SocialContainer>
         </Left>
-        <Center></Center>
+        <Center>
+        <Title>Useful Links</Title>
+        <List>
+          <ListItem>Home</ListItem>
+          <ListItem>Cart</ListItem>
+          <ListItem>Man Fashion</ListItem>
+          <ListItem>Woman Fashion</ListItem>
+          <ListItem>Accessories</ListItem>
+          <ListItem>My Account</ListItem>
+          <ListItem>Order Tracking</ListItem>
+          <ListItem>Wishlist</ListItem>
+          <ListItem>Wishlist</ListItem>
+          <ListItem>Terms</ListItem>
+        </List>
+        </Center>
         <Right></Right>
+        </Wrapper>
     </Container>
   )
 }
