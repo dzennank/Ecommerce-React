@@ -49,7 +49,7 @@ const CategoryItem = ({ item }) => {
             <Title>
                 {item.title}
             </Title>
-        g<Button>
+        <Button>
             SHOP NOW
         </Button>
         </Info>
