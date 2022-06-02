@@ -73,7 +73,7 @@ width: 50%;
 `
 
 const ContactInfo = styled.div`
-  padding: 20px;
+  padding: 5px;
 `
 const Icon = styled.div`
 
