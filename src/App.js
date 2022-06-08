@@ -20,12 +20,6 @@ function App() {
        <Route path="/productList" element={<ProductList />}/>
        <Route path="/product" element={<Product />}/>
      </Routes>
-      
-      {/* <ProductList /> */}
-      {/* <Product /> */}
-      {/* <Register /> */}
-    {/* <Login /> */}
-    {/* <Cart /> */}
     </div>
   );
 }
