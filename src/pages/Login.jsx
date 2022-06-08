@@ -1,5 +1,6 @@
 import React from 'react'
 import styled from 'styled-components';
+import { Link } from 'react-router-dom';
 
 const Container = styled.div`
     width: 100vw;
@@ -42,7 +43,7 @@ const Input = styled.input`
 `
 
 const Button = styled.button`
-    width: 40%;
+    width: 80%;
     border: none;
     border-radius: 20%;
     padding: 15px 20px;
@@ -65,7 +66,7 @@ const Login = () => {
               <Input placeholder = "User Name" />
               <Input placeholder = "Password" />
             </Form>
-            <Button>LOGIN</Button>
+            <Link to="/"><Button>LOGIN</Button></Link>
         </Wrapper>
     </Container>
   )
