@@ -7,9 +7,7 @@ import Footer from '../components/Footer'
 import Products from '../components/Products'
 
 const Container = styled.div`
-
-`
-const Title = styled.h1`
+  
 
 `
 const FilterContainer = styled.div`
@@ -37,7 +35,7 @@ const ProductList = () => {
     <Container>
         <Navbar />
         <Announcement />
-        <Title>Dresses</Title>
+        
         <FilterContainer>
             <Filter>
                 <FilterText>Filter Products:</FilterText>

@@ -53,6 +53,7 @@ justify-content: space-around;
 const Logo = styled.h1`
 font-weight: bold;
 margin-left: 55px;
+color: black;
 `
 const MenuItem = styled.div`
 font-size: 20px;
@@ -74,7 +75,9 @@ const Navbar = () => {
                 </SearchContainer>
             </Left> 
             <Center>
+            <Link to="/" style={{ textDecoration: 'none', color: 'black' }}>
                 <Logo>Logo</Logo>
+            </Link>
             </Center>
             <Right>
                 <Link to="/register" style={{ textDecoration: 'none' }}><MenuItem>REGISTER</MenuItem></Link>
