@@ -4,6 +4,7 @@ import ArrowBackIosNewIcon from '@mui/icons-material/ArrowBackIosNew';
 import ArrowForwardIosIcon from '@mui/icons-material/ArrowForwardIos';
 import { sliderItems } from '../data';
 import { useState } from 'react';
+import { Link } from 'react-router-dom';
 
 const Container = styled.div` 
 display: flex;
@@ -102,7 +103,9 @@ const Slider = () => {
             <InfoContainer>
                 <Title>{item.title}</Title>
                 <Desc>{item.desc}</Desc>
-                <Button>Show Now</Button>
+                <Link to="/productList">
+                  <Button>Show Now</Button>
+                </Link>
             </InfoContainer>
             </Slide>
             ) )}
