@@ -14,7 +14,10 @@ const Products = () => {
   return (
     <Container>
         {popularProducts.map((item) => (
-          <Link to="/product">
+          <Link to={`/product/${item.id}`}
+            state={{
+              item
+            }}>
             <Product item = {item} key = {item.id}/>
             </Link>
         ))}

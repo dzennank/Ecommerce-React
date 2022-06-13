@@ -6,6 +6,12 @@ import Navbar from '../components/Navbar'
 import Newsletter from '../components/Newsletter'
 import { Add, Remove } from '@mui/icons-material';
 import { Button } from '@mui/material';
+import { popularProducts } from '../data';
+import { useParams } from 'react-router-dom';
+import { useLocation } from 'react-router-dom';
+import { useState } from 'react';
+
+
 
 const Container = styled.div`
 
@@ -90,13 +96,22 @@ const Amount = styled.p`
 
 
 const Product = () => {
+  
+  
+  const location = useLocation()
+
+  console.log(location.state.item)
+
   return (
     <Container> 
         <Navbar />
         <Announcement />
         <Wrapper>
             <ImgContainer>
-                <Image src="https://i.ibb.co/S6qMxwr/jean.jpg"></Image>
+            
+              <Image src={location.state.item.img}></Image>
+            
+                
             </ImgContainer>
             <InfoContainer>
                 <Title>Denim Jumpsuit</Title>
