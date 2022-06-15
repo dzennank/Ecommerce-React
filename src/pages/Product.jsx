@@ -100,7 +100,9 @@ const Product = () => {
   
   const location = useLocation()
 
-  console.log(location.state.item)
+  const handleClick = () => {
+    
+  }
 
   return (
     <Container> 
@@ -146,7 +148,7 @@ const Product = () => {
                     <Amount>1</Amount>
                     <Add />
                 </AmountContainer>
-                <Button>ADD to Cart</Button>
+                <Button onClick={handleClick}>ADD to Cart</Button>
             </AddContainer>
 
             </InfoContainer>
