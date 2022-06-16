@@ -6,10 +6,10 @@ import Navbar from '../components/Navbar'
 import Newsletter from '../components/Newsletter'
 import { Add, Remove } from '@mui/icons-material';
 import { Button } from '@mui/material';
-import { popularProducts } from '../data';
-import { useParams } from 'react-router-dom';
 import { useLocation } from 'react-router-dom';
-import { useState } from 'react';
+import { useSelector, useDispatch } from "react-redux"
+import { addProduct } from '../redux/cartRedux';
+
 
 
 
@@ -96,12 +96,16 @@ const Amount = styled.p`
 
 
 const Product = () => {
-  
-  
+
+const cart = useSelector(state => state.cart.initialState)
+  const dispatch = useDispatch()
   const location = useLocation()
+  
 
   const handleClick = () => {
-    
+    dispatch(addProduct(location.state.item))
+    console.log(cart)
+
   }
 
   return (
@@ -148,7 +152,7 @@ const Product = () => {
                     <Amount>1</Amount>
                     <Add />
                 </AmountContainer>
-                <Button onClick={handleClick}>ADD to Cart</Button>
+                <Button onClick={() => handleClick(location.state.item)}>ADD to Cart</Button>
             </AddContainer>
 
             </InfoContainer>
