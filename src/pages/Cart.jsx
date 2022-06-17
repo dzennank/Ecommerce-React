@@ -144,6 +144,9 @@ const Button = styled.button`
 
 const Cart = () => {
   const product = useSelector(state => state.cart.products)
+  const amount = useSelector(state => state.cart.amount)
+
+  
   
   
   return (
@@ -185,7 +188,7 @@ const Cart = () => {
                 <PrizeDetail>
                 <ProdcutAmountContainer>
                   <Add />
-                  <ProductAmount>2</ProductAmount>
+                  <ProductAmount>{amount}</ProductAmount>
                   <Remove />
                 </ProdcutAmountContainer>
                 <ProductPrize>{item.price}$</ProductPrize>

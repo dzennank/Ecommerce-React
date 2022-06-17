@@ -157,7 +157,7 @@ const Product = () => {
 
             </InfoContainer>
         </Wrapper>
-        <Newsletter />
+        {/* <Newsletter /> */}
         <Footer />
 
     </Container> 

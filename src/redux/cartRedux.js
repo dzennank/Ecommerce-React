@@ -8,13 +8,24 @@ const options = {
 
         ],
         quantity: 0,
-        total: 0,
+        amount: 0,
+        
     },
     reducers: {
         addProduct(state, action) {
-            state.quantity += 1;
-            state.products.push(action.payload);
-            state.total += action.payload;
+
+            
+            if(!state.products.map(p => p.id).includes(action.payload.id)){
+                state.products.push(action.payload);
+                state.quantity += 1;
+                
+            }
+
+            state.amount = 1
+            
+            
+            
+            
         }
     }
 }
