@@ -97,14 +97,14 @@ const Amount = styled.p`
 
 const Product = () => {
 
-const cart = useSelector(state => state.cart.initialState)
+
   const dispatch = useDispatch()
   const location = useLocation()
   
 
   const handleClick = () => {
     dispatch(addProduct(location.state.item))
-    console.log(cart)
+   
 
   }
 
@@ -126,7 +126,7 @@ const cart = useSelector(state => state.cart.initialState)
             iaculis arcu nisi sed mauris. Nulla fermentum vestibulum ex, eget
             tristique tortor pretium ut. Curabitur elit justo, consequat id
             condimentum ac, volutpat ornare.</Desc>
-            <Price>$ 20</Price>
+            <Price>{location.state.item.price}$</Price>
             <FilterContainer>
             <Filter>
               <FilterTitle>Color</FilterTitle>

@@ -67,6 +67,7 @@ textDecoration: 'none'
 const Navbar = () => {
 
     const cart = useSelector(state => state.cart.quantity)
+    console.log(cart)
 
   return (
     <Container> 
