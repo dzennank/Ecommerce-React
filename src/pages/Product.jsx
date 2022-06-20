@@ -8,7 +8,8 @@ import { Add, Remove } from '@mui/icons-material';
 import { Button } from '@mui/material';
 import { useLocation } from 'react-router-dom';
 import { useSelector, useDispatch } from "react-redux"
-import { addProduct } from '../redux/cartRedux';
+import { addProduct, addAmount } from '../redux/cartRedux';
+
 
 
 
@@ -100,12 +101,15 @@ const Product = () => {
 
   const dispatch = useDispatch()
   const location = useLocation()
-  
+  const amount = useSelector(state => state.cart.amount)
 
   const handleClick = () => {
     dispatch(addProduct(location.state.item))
-   
+  
+  }
 
+  const handleAmount = () => {
+    dispatch(addAmount())
   }
 
   return (
@@ -149,8 +153,8 @@ const Product = () => {
             <AddContainer>
                 <AmountContainer>
                     <Remove />
-                    <Amount>1</Amount>
-                    <Add />
+                    <Amount>{amount}</Amount>
+                    <Add onClick={() => handleAmount()}/>
                 </AmountContainer>
                 <Button onClick={() => handleClick(location.state.item)}>ADD to Cart</Button>
             </AddContainer>

@@ -8,29 +8,27 @@ const options = {
 
         ],
         quantity: 0,
-        amount: 0,
+        amount: 1,
         
     },
     reducers: {
         addProduct(state, action) {
 
-            
             if(!state.products.map(p => p.id).includes(action.payload.id)){
                 state.products.push(action.payload);
                 state.quantity += 1;
                 
             }
 
-            state.amount = 1
             
-            
-            
-            
-        }
+        },
+    addAmount(state, action) {
+        state.amount +=1;
+    }
     }
 }
 
 const cartSlice = createSlice(options)
 
-export const { addProduct } = cartSlice.actions;
+export const { addProduct, addAmount } = cartSlice.actions;
 export default cartSlice.reducer;
