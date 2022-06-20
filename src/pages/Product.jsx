@@ -8,7 +8,7 @@ import { Add, Remove } from '@mui/icons-material';
 import { Button } from '@mui/material';
 import { useLocation } from 'react-router-dom';
 import { useSelector, useDispatch } from "react-redux"
-import { addProduct, addAmount } from '../redux/cartRedux';
+import { addProduct, addProductAmount } from '../redux/cartRedux';
 
 
 
@@ -101,16 +101,16 @@ const Product = () => {
 
   const dispatch = useDispatch()
   const location = useLocation()
-  const amount = useSelector(state => state.cart.amount)
+  // const amount = useSelector(state => state.products.find())
 
   const handleClick = () => {
     dispatch(addProduct(location.state.item))
   
   }
-
-  const handleAmount = () => {
-    dispatch(addAmount())
-  }
+// const handleAmount = () => {
+//   dispatch(addProductAmount(location.state.item))
+// }
+  
 
   return (
     <Container> 
@@ -130,7 +130,7 @@ const Product = () => {
             iaculis arcu nisi sed mauris. Nulla fermentum vestibulum ex, eget
             tristique tortor pretium ut. Curabitur elit justo, consequat id
             condimentum ac, volutpat ornare.</Desc>
-            <Price>{location.state.item.price}$</Price>
+            <Price>{location.state.item.price * (location.state.item.productAmount || 1)}$</Price>
             <FilterContainer>
             <Filter>
               <FilterTitle>Color</FilterTitle>
@@ -153,8 +153,8 @@ const Product = () => {
             <AddContainer>
                 <AmountContainer>
                     <Remove />
-                    <Amount>{amount}</Amount>
-                    <Add onClick={() => handleAmount()}/>
+                    <Amount>{location.state.item.productAmount}</Amount>
+                    {/* <Add onClick={handleAmount}/> */}
                 </AmountContainer>
                 <Button onClick={() => handleClick(location.state.item)}>ADD to Cart</Button>
             </AddContainer>

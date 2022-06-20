@@ -4,7 +4,9 @@ import styled from 'styled-components';
 import Announcement from '../components/Announcement'
 import Footer from '../components/Footer'
 import Navbar from '../components/Navbar'
-import { useSelector } from 'react-redux'
+import { useSelector, useDispatch } from 'react-redux'
+import { addProductAmount, removeProductAmount } from '../redux/cartRedux';
+
 
 
 const Container = styled.div`
@@ -144,7 +146,18 @@ const Button = styled.button`
 
 const Cart = () => {
   const product = useSelector(state => state.cart.products)
-  const amount = useSelector(state => state.cart.amount)
+  const dispatch = useDispatch();
+ 
+  const handleAmount = (item) => {
+    dispatch(addProductAmount(item))
+  }
+
+  const removeAmount = (item) => {
+    if(item.productAmount > 0) {
+      dispatch(removeProductAmount(item))
+    }
+    
+  }
 
   
   
@@ -187,11 +200,11 @@ const Cart = () => {
                 </ProductDetail>
                 <PrizeDetail>
                 <ProdcutAmountContainer>
-                  <Add />
-                  <ProductAmount>{amount}</ProductAmount>
-                  <Remove />
+                  <Add onClick={() => handleAmount(item)}/>
+                  <ProductAmount>{item.productAmount || 0}</ProductAmount>
+                  <Remove onClick={() => removeAmount(item)}/>
                 </ProdcutAmountContainer>
-                <ProductPrize>{item.price}$</ProductPrize>
+                <ProductPrize>{item.price * item.productAmount}$</ProductPrize>
               </PrizeDetail>
             </Product>
               ))}
