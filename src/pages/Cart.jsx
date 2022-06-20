@@ -1,4 +1,4 @@
-import { Add, Remove } from '@mui/icons-material';
+import { Add, PriceChange, Remove } from '@mui/icons-material';
 import React from 'react'
 import styled from 'styled-components';
 import Announcement from '../components/Announcement'
@@ -148,6 +148,13 @@ const Cart = () => {
   const product = useSelector(state => state.cart.products)
   const dispatch = useDispatch();
  
+  const price = product.map((i) => (
+      i.price * i.productAmount
+  ))
+
+  const totalPrice = price.reduce((a, b) => a+b, 0);
+ 
+ 
   const handleAmount = (item) => {
     dispatch(addProductAmount(item))
   }
@@ -241,7 +248,9 @@ const Cart = () => {
             </SummaryItem>
             <SummaryItem type="total">
               <SummaryItemText>Total</SummaryItemText>
-              <SummaryItemPrice>$ 80</SummaryItemPrice>
+              <SummaryItemPrice>
+                {totalPrice}
+              </SummaryItemPrice>
             </SummaryItem>
             <Button>CHECKOUT NOW</Button>
           </Summary>
