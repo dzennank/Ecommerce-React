@@ -6,7 +6,7 @@ import Footer from '../components/Footer'
 import Navbar from '../components/Navbar'
 import { useSelector, useDispatch } from 'react-redux'
 import { addProductAmount, removeProductAmount } from '../redux/cartRedux';
-
+import { Link } from 'react-router-dom';
 
 
 const Container = styled.div`
@@ -153,6 +153,8 @@ const Cart = () => {
   ))
 
   const totalPrice = price.reduce((a, b) => a+b, 0);
+
+  
  
  
   const handleAmount = (item) => {
@@ -176,7 +178,10 @@ const Cart = () => {
       <Wrapper>
         <Title>YOUR BAG</Title>
         <Top>
+        <Link to="/productList">
           <TopButton>CONTINUE SHOPPING</TopButton>
+        </Link>
+          
           <TopTexts>
             <TopText>Shopping Bag(2)</TopText>
             <TopText>Your Wishlist (0)</TopText>
