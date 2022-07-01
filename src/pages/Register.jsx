@@ -1,6 +1,9 @@
 import React from 'react'
 import styled from 'styled-components';
 import { Link } from 'react-router-dom';
+import { useState } from 'react';
+import { createUserWithEmailAndPassword } from 'firebase/auth';
+import { auth } from '../firebase';
 
 const Container = styled.div`
     width: 100vw;
@@ -54,11 +57,41 @@ const Button = styled.button`
     color: white;
     cursor: pointer;
     margin-left: 20px;
+
     
 `
 
 
+
+const initialData = {
+    firstName: '',
+    lastName: '',
+    email: '',
+    password: ''
+}
+
+
+
 const Register = () => {
+   
+    const [regData, setRegData] = useState(initialData)
+    const [email, setEmail] = useState("")
+    const [password, setPass] = useState("")
+
+    console.log(email)
+
+    const registration = async () => {
+    
+        try {
+            const user = await createUserWithEmailAndPassword(auth, email, password);
+            console.log(user)
+        }
+
+        catch(error){
+            console.log(error.massage);
+        }
+    };
+
   return (
     <Container>
         <Wrapper>
@@ -66,17 +99,17 @@ const Register = () => {
                 CREATE AN ACCOUNT
             </Title>
             <Form>
-                <Input placeholder="name" />
-                <Input placeholder="lastName" />
-                <Input placeholder="email" />
-                <Input placeholder="password" />
+                <Input placeholder="firstName" onChange={(e) => setRegData({...regData, firstName: e.currentTarget.value })}/>
+                <Input placeholder="lastName" onChange={(e) => setRegData({...regData, lastName: e.currentTarget.value })}/>
+                <Input placeholder="email" onChange={(e) => {setEmail(e.target.value)}}/>
+                <Input placeholder="password" onChange={(e) => {setPass(e.target.value)}}/>
                 <Input placeholder="confrimPassword" />
             </Form>
             <Agreement>
             By creating an account, I consent to the processing of my personal
             data in accordance with the <b>PRIVACY POLICY</b>
           </Agreement>
-            <Button>CREATE</Button>
+            <Button onClick={registration}>CREATE</Button>
         </Wrapper>
     </Container>
   )
