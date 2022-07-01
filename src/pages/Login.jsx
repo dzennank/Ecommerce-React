@@ -1,6 +1,9 @@
 import React from 'react'
 import styled from 'styled-components';
 import { Link } from 'react-router-dom';
+import { auth } from '../firebase';
+import { useState } from 'react';
+import { signInWithEmailAndPassword, onAuthStateChanged } from 'firebase/auth';
 
 const Container = styled.div`
     width: 100vw;
@@ -56,6 +59,29 @@ const Button = styled.button`
 
 
 const Login = () => {
+
+const [loginEmail, setLoginEmail] = useState('')
+const [loginPass, setLoginPass] = useState('')
+
+const [user, setUser] = useState({})
+
+onAuthStateChanged(auth, (currentUser) => {
+    setUser(currentUser)
+})
+
+const login = async() => {
+
+    try {
+        const user = await signInWithEmailAndPassword(auth, loginEmail, loginPass);
+        console.log(user)
+    }
+
+    catch(error){
+        console.log(error.massage);
+    }
+
+}
+
   return (
     <Container>
         <Wrapper>
@@ -63,10 +89,13 @@ const Login = () => {
               LOGIN
             </Title>
             <Form>
-              <Input placeholder = "User Name" />
-              <Input placeholder = "Password" />
+              <Input placeholder = "Email" onChange={(e) => {setLoginEmail(e.target.value)}}/>
+              <Input placeholder = "Password" onChange={(e) => {setLoginPass(e.target.value)}}/>
+              <h4>User logged in: {user.email}</h4>
             </Form>
-            <Link to="/"><Button>LOGIN</Button></Link>
+            
+              
+            <Link to="/"><Button onClick={login}>LOGIN</Button></Link>
         </Wrapper>
     </Container>
   )
