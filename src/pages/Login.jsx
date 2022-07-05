@@ -4,6 +4,7 @@ import { Link } from 'react-router-dom';
 import { auth } from '../firebase';
 import { useState } from 'react';
 import { signInWithEmailAndPassword, onAuthStateChanged } from 'firebase/auth';
+import SuccessLogin from './SuccessLogin';
 
 const Container = styled.div`
     width: 100vw;
@@ -63,11 +64,11 @@ const Login = () => {
 const [loginEmail, setLoginEmail] = useState('')
 const [loginPass, setLoginPass] = useState('')
 
-const [user, setUser] = useState({})
+// const [user, setUser] = useState({})
 
-onAuthStateChanged(auth, (currentUser) => {
-    setUser(currentUser)
-})
+// onAuthStateChanged(auth, (currentUser) => {
+//     setUser(currentUser)
+// })
 
 const login = async() => {
 
@@ -91,11 +92,21 @@ const login = async() => {
             <Form>
               <Input placeholder = "Email" onChange={(e) => {setLoginEmail(e.target.value)}}/>
               <Input placeholder = "Password" onChange={(e) => {setLoginPass(e.target.value)}}/>
-              <h4>User logged in: {user.email}</h4>
+              <h3>Don't have an acc, please register <Link to="/register">here</Link></h3>
+              {/* {user ? 
+              <p>
+              you are logged in as {user.email}, 
+              <Link
+              to="/">
+              Continue
+              </Link>
+              </p> 
+              : <p>????????</p>} */}
             </Form>
             
               
-            <Link to="/"><Button onClick={login}>LOGIN</Button></Link>
+            <Button onClick={login}>LOGIN</Button>
+            
         </Wrapper>
     </Container>
   )

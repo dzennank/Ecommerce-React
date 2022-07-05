@@ -10,11 +10,15 @@ const Container = styled.div`
         flex-wrap: wrap;
         justify-content: space-between;
 `
-const Products = () => {
-  const price = popularProducts.sort((a, b) => a.price - b.price)
+
+export const ProductDesc = () => {
+    
+    const price = popularProducts.sort((a, b) => b.price - a.price)
+    console.log(price)
   return (
+
     <Container>
-        {price.map((item) => (
+       {price.map((item) => (
           <Link to={`/product/${item.id}`}
             state={{
               item
@@ -25,5 +29,3 @@ const Products = () => {
     </Container>
   )
 }
-
-export default Products

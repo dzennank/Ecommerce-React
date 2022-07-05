@@ -1,10 +1,11 @@
-import React from 'react'
+import React, { useState } from 'react'
 import styled from 'styled-components'
 import Navbar from '../components/Navbar'
 import Announcement from '../components/Announcement'
 import Newsletter from '../components/Newsletter'
 import Footer from '../components/Footer'
 import Products from '../components/Products'
+import { ProductDesc } from '../components/ProductDesc'
 
 const Container = styled.div`
   
@@ -31,6 +32,18 @@ const Option = styled.option`
 `
 
 const ProductList = () => {
+
+const [desc, setDesc ] = useState(false)
+
+const handleDesc = () => {
+  if(!desc) {
+    setDesc(true)
+  } else {
+    setDesc(false)
+  }
+
+}
+
   return (
     <Container>
         <Navbar />
@@ -64,14 +77,17 @@ const ProductList = () => {
            
             <Filter>
                 <FilterText>Sort Products:</FilterText>
-                <Select>
+                <Select onChange={handleDesc}>
             <Option selected>Newest</Option>
             <Option>Price (asc)</Option>
             <Option>Price (desc)</Option>
           </Select>
             </Filter>
         </FilterContainer>
-        <Products />
+       {
+        desc ? <ProductDesc /> : <Products />
+       }
+        
         <Newsletter />
         <Footer />
     </Container>

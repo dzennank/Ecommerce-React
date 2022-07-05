@@ -6,6 +6,9 @@ import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
 import Badge from '@mui/material/Badge';
 import { Link } from 'react-router-dom';
 import { useSelector } from "react-redux";
+import { auth } from '../firebase';
+import { signOut } from 'firebase/auth';
+
 
 const Container = styled.div`
 height: 80px;
@@ -67,7 +70,10 @@ textDecoration: 'none'
 const Navbar = () => {
 
     const cart = useSelector(state => state.cart.quantity)
-    
+
+    const logout = async () => {
+        await signOut(auth);
+    };
 
   return (
     <Container> 
@@ -87,6 +93,7 @@ const Navbar = () => {
             <Right>
                 <Link to="/register" style={{ textDecoration: 'none' }}><MenuItem>REGISTER</MenuItem></Link>
                 <Link to="/login" style={{ textDecoration: 'none' }}><MenuItem>SIGN IN</MenuItem></Link>
+                <MenuItem onClick={logout}>SIGN OUT</MenuItem>
                 <Link to="/cart">
                     <MenuItem>
                         <Badge badgeContent={cart} color="primary">

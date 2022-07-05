@@ -1,3 +1,4 @@
+
 import { createSlice } from "@reduxjs/toolkit";
 
 
@@ -34,7 +35,8 @@ const options = {
             const { payload } = action;
             state.products.find(p => p.id === payload.id).productAmount -= 1;
         }
-   
+
+       
     }
 }
 
