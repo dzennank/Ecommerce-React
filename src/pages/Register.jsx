@@ -30,9 +30,10 @@ const Wrapper = styled.div`
     
     `
 const Title = styled.h1`
-    font-size: 24px;
-    font-weight: 300;
+    font-size: 20px;
+    font-weight: 100;
     margin-right: 20px;
+
 `
 const Form = styled.form`
     display: flex;
@@ -73,23 +74,47 @@ const initialData = {
 
 
 const Register = () => {
-   
-    const [regData, setRegData] = useState(initialData)
+
+    // const validateEmail = () => {
+        
+    //     if(/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(email) === true) {
+    //         return true;
+    //     } else {
+    //         return false;
+    //     }
+    // }
+
+    //     const validatePass = () => {
+    //         if(password >= 6) {
+    //             return true;
+    //         } else {
+    //             return false;
+    //         }
+    //     }
+    
+
     const [email, setEmail] = useState("")
     const [password, setPass] = useState("")
 
     console.log(email)
 
     const registration = async () => {
-    
-        try {
-            const user = await createUserWithEmailAndPassword(auth, email, password);
-            console.log(user)
-        }
 
-        catch(error){
-            console.log(error.massage);
+        if(/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(email) === true) {
+            try {
+                const user = await createUserWithEmailAndPassword(auth, email, password);
+                console.log(user)
+            }
+    
+            catch(error){
+                alert("Password must have a minimum 6 characters")
+            }
+        } else {
+            alert("Your email or password is not valid!! Password must have a minimum 6 characters")
         }
+        
+        
+       
     };
 
   return (
@@ -99,11 +124,8 @@ const Register = () => {
                 CREATE AN ACCOUNT
             </Title>
             <Form>
-                <Input placeholder="firstName" onChange={(e) => setRegData({...regData, firstName: e.currentTarget.value })}/>
-                <Input placeholder="lastName" onChange={(e) => setRegData({...regData, lastName: e.currentTarget.value })}/>
                 <Input placeholder="email" onChange={(e) => {setEmail(e.target.value)}}/>
                 <Input placeholder="password" onChange={(e) => {setPass(e.target.value)}}/>
-                <Input placeholder="confrimPassword" />
             </Form>
             <Agreement>
             By creating an account, I consent to the processing of my personal
@@ -114,5 +136,6 @@ const Register = () => {
     </Container>
   )
 }
+
 
 export default Register
