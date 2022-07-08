@@ -5,7 +5,7 @@ import { popularProducts } from '../data';
 import { Link } from 'react-router-dom';
 
 const Container = styled.div`
-     padding: 20px;
+     padding: 21px;
         display: flex;
         flex-wrap: wrap;
         justify-content: space-between;
